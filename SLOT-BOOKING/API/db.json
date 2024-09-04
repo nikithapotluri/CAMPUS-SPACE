@@ -1,0 +1,293 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "CSE100001",
+      "name": "Dr. A. Jayalakshmi",
+      "email": "hodcse@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE100001.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 2,
+      "username": "CSE010001",
+      "name": "Dr. M. V. Ramakrishna",
+      "email": "mvrk@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010001.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 3,
+      "username": "CSE010019",
+      "name": "Dr. S. Madhavi",
+      "email": "mmadhavi@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010019.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 4,
+      "username": "CSE010099",
+      "name": "Dr. P. Sai Kiran",
+      "email": "psaikiran@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010099.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 5,
+      "username": "CSE010084",
+      "name": "Dr. K Koteswara Rao",
+      "email": "kkrao@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010084.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 6,
+      "username": "CSE010102",
+      "name": "Dr. Ravuri Daniel",
+      "email": "danielravuri@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010102.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 7,
+      "username": "CSE010017",
+      "name": "Dr. B. Narasimha Swamy",
+      "email": "swamy_bn@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010017.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 8,
+      "username": "CSE010071",
+      "name": "Dr. S. Phani Praveen",
+      "email": "sppraveen@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010071.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 9,
+      "username": "CSE010004",
+      "name": "Dr. A. Ramana Lakshmi",
+      "email": "arlakshmi@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010004.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 10,
+      "username": "CSE010025",
+      "name": "Dr. J. Rama Devi",
+      "email": "ramadevi@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010025.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 11,
+      "username": "CSE010015",
+      "name": "Dr. G Lalitha Kumari",
+      "email": "glalitha@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010015.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 12,
+      "username": "CSE010048",
+      "name": "Dr. D. Swapna",
+      "email": "dswapna@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010048.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 13,
+      "username": "CSE010050",
+      "name": "Dr. M. Sailaja",
+      "email": "msailaja@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010050.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 14,
+      "username": "CSE010061",
+      "name": "Ms. Y. Surekha",
+      "email": "ysurekha@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010061.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 15,
+      "username": "CSE010062",
+      "name": "Ms. D. Sree Lakshmi",
+      "email": "dslakshmi@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010062.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 16,
+      "username": "CSE010063",
+      "name": "Ms. T. Sri Lakshmi",
+      "email": "tslakshmi@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010063.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 17,
+      "username": "CSE010065",
+      "name": "Dr. N. Venkata Ramana Gupta",
+      "email": "nvrg@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010065.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 18,
+      "username": "CSE010068",
+      "name": "Ms. A. Madhuri",
+      "email": "madhuria@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010068.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 19,
+      "username": "CSE010073",
+      "name": "Mr. P Anil Kumar",
+      "email": "anilp@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010073.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 20,
+      "username": "CSE010070",
+      "name": "Mr. B. Vishnu Vardhan",
+      "email": "bvishnu@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010070.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 21,
+      "username": "CSE010072",
+      "name": "Mr. D.Lokesh Sai Kumar",
+      "email": "lokeshsaikumar@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010072.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 22,
+      "username": "CSE010075",
+      "name": "Ms. A.Divya",
+      "email": "adivya@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010075.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 23,
+      "username": "CSE010074",
+      "name": "Mr. Yuva Krishna. Aluri",
+      "email": "ayk@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010074.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 24,
+      "username": "CSE010080",
+      "name": "Mr. Ramgopal Musunuri",
+      "email": "ramgopal.musunuri@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010080.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 25,
+      "username": "CSE010085",
+      "name": "Mr. S. Krishna Kishore",
+      "email": "skkishore@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010085.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 26,
+      "username": "CSE010088",
+      "name": "Mr. B. Vinay Kumar",
+      "email": "bvinaykumar@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010088.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 27,
+      "username": "CSE010093",
+      "name": "Ms. Manasa Yarrarapu",
+      "email": "manasa.y@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010093.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 28,
+      "username": "CSE010096",
+      "name": "Mr. Prashant Atmakuri",
+      "email": "prashant.a@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010096.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 29,
+      "username": "CSE010097",
+      "name": "Ms. Pulletikurthy Dedeepya",
+      "email": "dedeepya@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010097.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 30,
+      "username": "CSE010098",
+      "name": "Mr. L. V. Krishna Rao",
+      "email": "krishna.likki@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010098.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 31,
+      "username": "CSE010103",
+      "name": "Mr. Michael Sadgun Rao Kona",
+      "email": "michael.kona@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010103.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 32,
+      "username": "CSE010104",
+      "name": "Mr. Bala Bhaskara Rao Emani",
+      "email": "balabhaskar605@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010104.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 33,
+      "username": "CSE010105",
+      "name": "Dr. Kilari Jyothsna Devi",
+      "email": "kilari.jyothsna@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010105.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 34,
+      "username": "CSE010106",
+      "name": "Sudhakar Reddy Narala",
+      "email": "nsudhakar@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010106.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 35,
+      "username": "CSE010108",
+      "name": "Dr. Uddagiri Sirisha",
+      "email": "sirisha.u@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010108.jpg",
+      "password": "Pvpsit@123"
+    },
+    {
+      "id": 36,
+      "username": "CSE010109",
+      "name": "Ms. D. Jyothi",
+      "email": "djyothi@pvpsiddhartha.ac.in",
+      "profile_pic": "https://www.pvpsiddhartha.ac.in/images/CSESTAFF/CSE010109.jpg",
+      "password": "Pvpsit@123"
+    }
+  ],
+  "bookedSlots": []
+}
