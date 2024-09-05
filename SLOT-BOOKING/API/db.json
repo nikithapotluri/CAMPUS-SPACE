@@ -289,5 +289,14 @@
       "password": "Pvpsit@123"
     }
   ],
-  "bookedSlots": []
+  "bookedSlots": [
+    {
+      "id": "cf1a",
+      "date": "2024-09-06",
+      "facultyName": "HOD",
+      "facultyid": "CSE100001",
+      "roomNo": "208",
+      "event": "SIH MEET"
+    }
+  ]
 }

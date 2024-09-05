@@ -19,7 +19,7 @@ const BookedSlotsPage = () => {
     }
   }, [currentUser]);
 
-  const handleDelete = async (id) => {
+  async function handleDelete  (id){
     // Delete the slot from the backend
     try {
       await fetch(`http://localhost:3000/bookedSlots/${id}`, {

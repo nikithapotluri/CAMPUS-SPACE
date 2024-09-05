@@ -5,6 +5,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './ModalPopup.css';
 import Select from '../select/Select'; 
+import moment from 'moment'; // Import moment.js for date validation
 
 const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
   let navigate = useNavigate();
@@ -34,8 +35,19 @@ const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
     setSlotSelected(hasSelectedSlots);
   };
 
-  async function handleSubmit(e)  {
+  async function handleSubmit(e) {
     e.preventDefault();
+
+    // Get the selected date and today's date
+    const selectedDate = moment(values.date);
+    const today = moment().startOf('day'); // Get today's date at the start of the day
+
+    // Check if the selected date is in the past
+    if (selectedDate.isBefore(today)) {
+      toast.error("You cannot select a past date. Please choose a valid date.");
+      return;
+    }
+
     if (
       values.date &&
       values.facultyName &&
@@ -115,6 +127,7 @@ const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
                 value={values.date}
                 onChange={handleChanges}
                 required
+                min={moment().format('YYYY-MM-DD')} // Disable past dates
               />
             </Form.Group>
             <Form.Group controlId="roomNo">
