@@ -36,7 +36,7 @@ const Select = ({ onSlotSelect }) => {
         ? prevSelectedSlots.filter(slot => slot !== time)
         : [...prevSelectedSlots, time];
 
-      onSlotSelect(newSelectedSlots.length > 0); // Notify parent about selection
+      onSlotSelect(newSelectedSlots); // Notify parent with the selected slots
       return newSelectedSlots;
     });
   };

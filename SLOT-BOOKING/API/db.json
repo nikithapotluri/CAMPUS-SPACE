@@ -291,12 +291,16 @@
   ],
   "bookedSlots": [
     {
-      "id": "cf1a",
+      "id": "f86e",
       "date": "2024-09-06",
       "facultyName": "HOD",
       "facultyid": "CSE100001",
       "roomNo": "208",
-      "event": "SIH MEET"
+      "event": "SIH MEET",
+      "timeSlots": [
+        "11:00 am - 12:00 pm",
+        "12:00 pm - 01:00 pm"
+      ]
     }
   ]
 }

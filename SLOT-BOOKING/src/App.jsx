@@ -10,6 +10,7 @@ import ModalPopup from './components/modalpopup/ModalPopup';
 import Select from './components/select/Select';
 import SeminarHall from './components/seminarHalls/SeminarHall'; 
 import BookedSlotsPage from './components/bookedslots/bookedSlotsPage' 
+import AllBookedSlots from './components/allbookedslots/AllBookedSlots'
 
 function App() {
   const browserRouter = createBrowserRouter([
@@ -49,6 +50,10 @@ function App() {
         {
           path: "bookedslots",
           element: <BookedSlotsPage />,
+        },
+        {
+          path: "allbookedslots",
+          element: <AllBookedSlots />,
         }
       ],
     },

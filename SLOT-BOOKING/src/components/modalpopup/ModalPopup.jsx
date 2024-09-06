@@ -16,6 +16,7 @@ const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
     facultyid: '',
     roomNo: '',
     event: '',
+    timeSlots: [] // Add timeSlots to initial form values
   };
 
   const [values, setValues] = useState(initialFormValues);
@@ -31,8 +32,12 @@ const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  const handleSlotSelect = (hasSelectedSlots) => {
-    setSlotSelected(hasSelectedSlots);
+  const handleSlotSelect = (selectedSlots) => {
+    setSlotSelected(selectedSlots.length > 0); // Check if any slot is selected
+    setValues(prevValues => ({
+      ...prevValues,
+      timeSlots: selectedSlots // Update the timeSlots in state
+    }));
   };
 
   async function handleSubmit(e) {
