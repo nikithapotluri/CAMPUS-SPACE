@@ -37,7 +37,7 @@ function Header() {
           <Link to="/allbookedslots" className="nav-link">
             <HiOutlineHome className="fs-3 text-danger" />
             <div className="black" style={{ color: 'black' }}>
-              Booked Slots
+              Slots
             </div>
           </Link>
         </li>
