@@ -111,6 +111,19 @@ userApp.post('/book-slot', async (req, res) => {
 });
 
 
+// To retrieve all booked slots
+userApp.get('/bookedSlots', async (req, res) => {
+  const bookedSlotsCollection = req.app.get('bookedSlotsCollection'); 
+  try {
+    const bookedSlots = await bookedSlotsCollection.find().toArray();
+    res.send({ message: 'Booked slots', payload: bookedSlots });
+  } catch (error) {
+    console.error('Error fetching booked slots:', error);
+    res.status(500).send({ message: 'Failed to fetch booked slots.' });
+  }
+});
+
+
 
 //export userApp
 module.exports = userApp;

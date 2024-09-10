@@ -77,4 +77,3 @@ const Select = ({ onSlotSelect, bookedSlots }) => {
 };
 
 export default Select;
-

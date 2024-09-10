@@ -30,15 +30,15 @@ const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
   }, [isOpen]);
 
   useEffect(() => {
-    if (values.date) {
-      fetchBookedSlots(values.date); // Fetch booked slots when a date is selected
+    if (values.date && values.roomNo) {
+      fetchBookedSlots(values.date, values.roomNo); // Fetch booked slots when a date and room number are selected
     }
-  }, [values.date]);
+  }, [values.date, values.roomNo]);
 
-  // Function to fetch booked slots for the selected date
-  const fetchBookedSlots = async (date) => {
+  // Function to fetch booked slots for the selected date and room number
+  const fetchBookedSlots = async (date, roomNo) => {
     try {
-      let res = await fetch(`http://localhost:3000/bookedSlots?date=${date}`);
+      let res = await fetch(`http://localhost:3000/bookedSlots?date=${date}&roomNo=${roomNo}`);
       if (res.ok) {
         let data = await res.json();
         setBookedSlots(data);
@@ -77,6 +77,14 @@ const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    const selectedDate = moment(values.date);
+    const today = moment().startOf('day'); 
+
+    if (selectedDate.isBefore(today)) {
+      toast.error("You cannot select a past date. Please choose a valid date.");
+      return;
+    }
 
     if (slotSelected && isSlotClashing(values.timeSlots, bookedSlots)) {
       toast.error("Selected time slots are already booked. Please choose different slots.");
@@ -184,13 +192,11 @@ const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
                 required
               />
             </Form.Group>
-
-            <p>Choose your preferred time slot for {selectedLab}</p>
+          </Form>
+          <p>Choose your preferred time slot for {selectedLab}</p>
           <div className="overflow-auto">
             <Select onSlotSelect={handleSlotSelect} bookedSlots={bookedSlots} />
           </div>
-
-          </Form>
         </Modal.Body>
         <Modal.Footer className="d-flex justify-content-center">
           <Button variant="secondary" onClick={onClose} className="mx-2">

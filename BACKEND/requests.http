@@ -32,6 +32,28 @@ Content-Type: application/json
 
 
 ###
+post http://localhost:4000/user-api/book-slot
+Content-Type: application/json
+
+{
+    
+    "roomNo": "*", 
+      "date": "2024-09-11",
+      "timeSlots": [
+        "09:00 am - 10:00 am",
+        "12:00 pm - 01:00 pm",
+        "10:00 am - 11:00 am",
+        "11:00 am - 12:00 pm"
+      ]
+   
+}
+
+
+###
+get  http://localhost:4000/user-api/bookedSlots
+
+
+###
 delete http://localhost:4000/user-api/user/1
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1hZGh1IiwiaWF0IjoxNzIwODYwNjkxLCJleHAiOjE3MjA4NjQyOTF9.rq1To5-djRFwJniKaHE7W40V3bpGgPuwbsCe283vxSk
 

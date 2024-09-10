@@ -315,6 +315,43 @@
         "10:00 am - 11:00 am",
         "11:00 am - 12:00 pm"
       ]
+    },
+    {
+      "id": "a04d",
+      "date": "2024-09-12",
+      "facultyName": "HOD",
+      "facultyid": "CSE100001",
+      "roomNo": "*",
+      "event": "ghi",
+      "timeSlots": [
+        "09:00 am - 10:00 am",
+        "10:00 am - 11:00 am",
+        "11:00 am - 12:00 pm"
+      ]
+    },
+    {
+      "id": "4222",
+      "date": "2024-09-12",
+      "facultyName": "Anil",
+      "facultyid": "CSE010073",
+      "roomNo": "113",
+      "event": "efg",
+      "timeSlots": [
+        "09:00 am - 10:00 am",
+        "10:00 am - 11:00 am",
+        "11:00 am - 12:00 pm"
+      ]
+    },
+    {
+      "id": "41f2",
+      "date": "2024-09-12",
+      "facultyName": "Anil Ravipudi",
+      "facultyid": "CSE010073",
+      "roomNo": "216",
+      "event": "dsa",
+      "timeSlots": [
+        "09:00 am - 10:00 am"
+      ]
     }
   ]
 }
