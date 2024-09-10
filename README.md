@@ -1,7 +1,7 @@
 
 # Slot Booking System
 
-CampusSpace is a MERN-based web app for college lecturers to book seminar halls, labs, and auditoriums. It features easy space booking, time slot management, and login authentication, streamlining campus resource management.
+__CampusSpace__ is a MERN-based web app designed for college lecturers to efficiently book seminar halls, labs, and auditoriums. It simplifies campus resource management with features like easy space booking, time slot management, and login authentication.
 
 
 ## Setup & Usage
