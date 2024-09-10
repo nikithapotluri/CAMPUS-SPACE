@@ -1,36 +1,34 @@
-import {React, useContext, useEffect} from 'react';
+import { React, useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import './Login.css';
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { HiOutlineHome } from "react-icons/hi";
 import { FiLogIn } from "react-icons/fi";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import logo from "../pictures/Logo1.png";
 import { userLoginContext } from "../../contexts/userLoginContext";
 
 function Login() {
-  let { register, handleSubmit, formState: {errors} } = useForm();
+  let { register, handleSubmit } = useForm();
   let navigate = useNavigate();
-  
-  let { loginUser, userLoginStatus} = useContext(userLoginContext);
+  let { loginUser, userLoginStatus } = useContext(userLoginContext);
+
+  const [showPassword, setShowPassword] = useState(false);
 
   function onUserLogin(userCred) {
-    //userCred.preventDefault();  //used to not lose data when refreshed
     loginUser(userCred);
   }
 
   useEffect(() => {
     if (userLoginStatus === true) {
-      
-      setTimeout(()=>{
+      setTimeout(() => {
         navigate("/slot");
-      },2000);
-
+      }, 2000);
     }
   }, [userLoginStatus]);
-
 
   return (
     <div>
@@ -74,15 +72,18 @@ function Login() {
 
                 <div className="mb-3">
                   <label htmlFor="password" className="form-label">Password</label>
-                  <input
-                    type="password"
-                    {...register('password')}
-                    className="form-control"
-                    id="password"
-                  />
+                  <div className="input-group">
+                    <input
+                      type={showPassword ? "text" : "password"} // Toggle input type based on state
+                      {...register('password')}
+                      className="form-control password-input"
+                      id="password"
+                    />
+                    <span className="input-group-text eye-icon" onClick={() => setShowPassword(!showPassword)}>
+                      {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+                    </span>
+                  </div>
                 </div>
-
-                <br />
 
                 <button
                   type="submit"

@@ -5,7 +5,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './ModalPopup.css';
 import Select from '../select/Select'; 
-import moment from 'moment'; // Import moment.js for date validation
+import moment from 'moment';
 
 const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
   let navigate = useNavigate();
@@ -16,10 +16,11 @@ const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
     facultyid: '',
     roomNo: '',
     event: '',
-    timeSlots: [] // Add timeSlots to initial form values
+    timeSlots: [] 
   };
 
   const [values, setValues] = useState(initialFormValues);
+  const [bookedSlots, setBookedSlots] = useState([]); // State to store booked slots
   const [slotSelected, setSlotSelected] = useState(false);
 
   useEffect(() => {
@@ -28,28 +29,57 @@ const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    if (values.date) {
+      fetchBookedSlots(values.date); // Fetch booked slots when a date is selected
+    }
+  }, [values.date]);
+
+  // Function to fetch booked slots for the selected date
+  const fetchBookedSlots = async (date) => {
+    try {
+      let res = await fetch(`http://localhost:3000/bookedSlots?date=${date}`);
+      if (res.ok) {
+        let data = await res.json();
+        setBookedSlots(data);
+      } else {
+        toast.error("Failed to fetch booked slots.");
+      }
+    } catch (error) {
+      console.error("Error fetching booked slots:", error);
+      toast.error("Error occurred while fetching booked slots.");
+    }
+  };
+
   const handleChanges = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
   const handleSlotSelect = (selectedSlots) => {
-    setSlotSelected(selectedSlots.length > 0); // Check if any slot is selected
+    setSlotSelected(selectedSlots.length > 0);
     setValues(prevValues => ({
       ...prevValues,
-      timeSlots: selectedSlots // Update the timeSlots in state
+      timeSlots: selectedSlots
     }));
+  };
+
+  // Function to check if any selected time slot clashes with already booked slots
+  const isSlotClashing = (selectedSlots, bookedSlots) => {
+    for (let bookedSlot of bookedSlots) {
+      for (let bookedTime of bookedSlot.timeSlots) {
+        if (selectedSlots.includes(bookedTime)) {
+          return true; // Return true if a clash is detected
+        }
+      }
+    }
+    return false; // No clash detected
   };
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    // Get the selected date and today's date
-    const selectedDate = moment(values.date);
-    const today = moment().startOf('day'); // Get today's date at the start of the day
-
-    // Check if the selected date is in the past
-    if (selectedDate.isBefore(today)) {
-      toast.error("You cannot select a past date. Please choose a valid date.");
+    if (slotSelected && isSlotClashing(values.timeSlots, bookedSlots)) {
+      toast.error("Selected time slots are already booked. Please choose different slots.");
       return;
     }
 
@@ -71,13 +101,13 @@ const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
         if (res.ok) {
           toast.success("Slot booked successfully!", {
             position: "top-center",
-            autoClose: 2000, // Automatically close after 2 seconds
+            autoClose: 2000, 
           });
           onClose();
 
           setTimeout(() => {
             navigate('/bookedslots');
-          }, 2000); // Navigate after the toast is displayed
+          }, 2000);
         } else {
           toast.error("Failed to book the slot. Please try again.");
         }
@@ -97,10 +127,7 @@ const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
           <Modal.Title>Book Slot for {selectedLab}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Choose your preferred time slot for {selectedLab}</p>
-          <div className="overflow-auto">
-            <Select onSlotSelect={handleSlotSelect} />
-          </div>
+          
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="facultyName">
               <Form.Label>Faculty Name</Form.Label>
@@ -132,7 +159,7 @@ const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
                 value={values.date}
                 onChange={handleChanges}
                 required
-                min={moment().format('YYYY-MM-DD')} // Disable past dates
+                min={moment().format('YYYY-MM-DD')}
               />
             </Form.Group>
             <Form.Group controlId="roomNo">
@@ -157,6 +184,12 @@ const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
                 required
               />
             </Form.Group>
+
+            <p>Choose your preferred time slot for {selectedLab}</p>
+          <div className="overflow-auto">
+            <Select onSlotSelect={handleSlotSelect} bookedSlots={bookedSlots} />
+          </div>
+
           </Form>
         </Modal.Body>
         <Modal.Footer className="d-flex justify-content-center">
@@ -169,7 +202,6 @@ const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
         </Modal.Footer>
       </Modal>
 
-      {/* Toast notification */}
       <ToastContainer />
     </>
   );

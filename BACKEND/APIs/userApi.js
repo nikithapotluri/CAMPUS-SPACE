@@ -82,5 +82,35 @@ else{
 
 }))
 
+// Route to handle slot booking
+userApp.post('/book-slot', async (req, res) => {
+  const bookedSlotsCollection = req.app.get("bookedSlotsCollection"); // Assuming bookedSlotsCollection exists
+  const newBooking = req.body;
+
+  try {
+    // Check for clashes with existing bookings
+    const conflictingSlots = await bookedSlotsCollection.find({
+      roomNo: newBooking.roomNo, 
+      date: newBooking.date,
+      timeSlots: { $in: newBooking.timeSlots }
+    }).toArray();
+
+    if (conflictingSlots.length > 0) {
+      // If any slot is already booked, return an error
+      return res.status(400).send({ message: 'Selected time slot is already booked.' });
+    }
+
+    // If no conflicts, insert the new booking
+    await bookedSlotsCollection.insertOne(newBooking);
+
+    res.send({ message: 'Slot booked successfully!' });
+  } catch (error) {
+    console.error('Error booking slot:', error);
+    res.status(500).send({ message: 'Failed to book slot.' });
+  }
+});
+
+
+
 //export userApp
 module.exports = userApp;

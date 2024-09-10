@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { Card } from 'react-bootstrap';
 
-const Select = ({ onSlotSelect }) => {
+const Select = ({ onSlotSelect, bookedSlots }) => {
   const intime = "09:00 am";
   const outtime = "05:00 pm";
   const [result, setResult] = useState([]);
@@ -29,14 +29,24 @@ const Select = ({ onSlotSelect }) => {
     calculateIntervals(intime, outtime);
   }, []);
 
+  // Function to check if the slot is already booked
+  const isSlotBooked = (time) => {
+    return bookedSlots.some(slot => slot.timeSlots.includes(time));
+  };
+
   const handleSlotClick = (time) => {
+    if (isSlotBooked(time)) {
+      toast.warn('This time slot is already booked. Please choose a different slot.');
+      return;
+    }
+
     setSelectedSlots((prevSelectedSlots) => {
       const isSelected = prevSelectedSlots.includes(time);
       const newSelectedSlots = isSelected
         ? prevSelectedSlots.filter(slot => slot !== time)
         : [...prevSelectedSlots, time];
 
-      onSlotSelect(newSelectedSlots); // Notify parent with the selected slots
+      onSlotSelect(newSelectedSlots);
       return newSelectedSlots;
     });
   };
@@ -50,25 +60,21 @@ const Select = ({ onSlotSelect }) => {
           style={{ 
             width: '110px', 
             borderRadius: '8px', 
-            backgroundColor: selectedSlots.includes(time) ? '#4caf50' : '#f8f9fa' 
+            cursor: 'pointer', 
+            backgroundColor: isSlotBooked(time) ? 'lightgray' : selectedSlots.includes(time) ? 'green' : 'white',
+            color: isSlotBooked(time) ? 'red' : selectedSlots.includes(time) ? 'white' : 'black',
+            pointerEvents: isSlotBooked(time) ? 'none' : 'auto',
           }}
+          onClick={() => handleSlotClick(time)}
         >
-          <Card.Body 
-            className="p-2" 
-            onClick={() => handleSlotClick(time)} // Trigger slot selection
-            style={{ cursor: 'pointer' }} // Make it look clickable
-          >
-            <Card.Text 
-              className="mb-0" 
-              style={{ color: selectedSlots.includes(time) ? '#fff' : '#4caf50', fontWeight: 'bold', fontSize: '14px' }}
-            >
-              {time}
-            </Card.Text>
+          <Card.Body>
+            <Card.Text>{time}</Card.Text>
           </Card.Body>
         </Card>
-      )) : <p>No slots available</p>}
+      )) : <p>No slots available.</p>}
     </div>
   );
 };
 
 export default Select;
+

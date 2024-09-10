@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { HiOutlineHome } from "react-icons/hi";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { FaChevronDown } from "react-icons/fa";
+import { FaRegBookmark } from "react-icons/fa";
 import logo from "../pictures/Logo1.png";
 import dp from "../pictures/dp.jpg"
 import { userLoginContext } from "../../contexts/userLoginContext";
@@ -35,7 +36,7 @@ function Header() {
 
         <li className="nav-item ">
           <Link to="/allbookedslots" className="nav-link">
-            <HiOutlineHome className="fs-3 text-danger" />
+            <FaRegBookmark className="fs-3 text-danger " />
             <div className="black" style={{ color: 'black' }}>
               Slots
             </div>

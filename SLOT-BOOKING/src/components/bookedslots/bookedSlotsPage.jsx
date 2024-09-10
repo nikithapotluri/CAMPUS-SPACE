@@ -47,7 +47,7 @@ const BookedSlotsPage = () => {
       {userLoginStatus === true ? (
         <div className='container mt-0'>
           <div className='d-flex flex-column align-items-center'>
-            <h1 className='text-center text-black'>My Booked Slots</h1>
+            <h1 className='text-center text-black'>My Upcoming Slots</h1>
             {bookedSlots.length > 0 ? (
               <table className='table table-bordered mt-4'>
                 <thead>

@@ -25,9 +25,12 @@ mClient
 
     //connect to a collection
     const usersCollection=fsddb.collection('users')
+    const bookedSlotsCollection = fsddb.collection('bookedSlots');
 
     //share collection obj to APIS
     app.set('usersCollection',usersCollection);
+    app.set('bookedSlotsCollection', bookedSlotsCollection);
+
 
     console.log("Db connection success");
 
