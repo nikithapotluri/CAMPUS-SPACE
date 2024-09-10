@@ -11,9 +11,9 @@ You can run the application by:
 npm start
 
 ```
-If you would like to customize the platform for specific college needs, you're welcome to modify the code.
++ If you would like to customize the platform for specific college needs, you're welcome to modify the code.
 
-After finishing customization, you can run the application by:
++ After finishing customization, you can run the application by:
 ```
 npm install
 
