@@ -15,23 +15,25 @@ npm start
 If you would like to customize the platform for specific college needs, you're welcome to modify the code.
 
 After finishing customization, you can run the application by:
-
+```
 npm install
 
 npm start
 
+```
+
 
 ## Software Used
-Programming Languages: JavaScript (React.js, Node.js)
+**Programming Languages**: JavaScript (React.js, Node.js)
 
-Backend: Express.js, MongoDB
+**Backend**: Express.js, MongoDB
 
-Technologies: MERN Stack (MongoDB, Express.js, React.js, Node.js)
+**Technologies**: MERN Stack (MongoDB, Express.js, React.js, Node.js)
 
 ## Development Tools
-Visual Studio Code (VS Code) as the primary code editor.
+**Visual Studio Code (VS Code)** as the primary code editor.
 
-Git for version control.
+__Git__ for version control.
 ## Proposed Model
 The platform uses a real-time booking system that ensures up-to-date availability of departmental facilities.
 It incorporates a priority-based booking feature to allow certain events to be prioritized based on departmental guidelines.
