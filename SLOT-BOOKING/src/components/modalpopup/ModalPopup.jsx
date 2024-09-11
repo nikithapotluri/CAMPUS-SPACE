@@ -100,7 +100,7 @@ const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
       slotSelected
     ) {
       try {
-        let res = await fetch("http://localhost:3000/bookedSlots", {
+        let res = await fetch("http://localhost:4000/user-api/book-slot", {
           method: "POST",
           headers: { "Content-type": "application/json" },
           body: JSON.stringify(values),
@@ -171,7 +171,7 @@ const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
               />
             </Form.Group>
             <Form.Group controlId="roomNo">
-              <Form.Label>Room Number</Form.Label>
+              <Form.Label>Room Number (For auditorium, enter *)</Form.Label>
               <Form.Control
                 type="text"
                 name="roomNo"

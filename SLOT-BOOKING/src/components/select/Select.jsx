@@ -31,7 +31,8 @@ const Select = ({ onSlotSelect, bookedSlots }) => {
 
   // Function to check if the slot is already booked
   const isSlotBooked = (time) => {
-    return bookedSlots.some(slot => slot.timeSlots.includes(time));
+    // Ensure that bookedSlots is an array
+    return Array.isArray(bookedSlots) && bookedSlots.some(slot => slot.timeSlots.includes(time));
   };
 
   const handleSlotClick = (time) => {
