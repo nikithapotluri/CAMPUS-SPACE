@@ -9,13 +9,15 @@ const BookedSlotsPage = () => {
 
   useEffect(() => {
     if (currentUser) {
-      // Fetch booked slots for the current user
-      fetch(`http://localhost:3000/bookedSlots?facultyid=${currentUser.username}`)
+      // Fetch booked slots for the current user by facultyid
+      fetch(`http://localhost:4000/user-api/bookedSlots/${currentUser.username}`)
         .then(response => response.json())
         .then(data => {
+          console.log('Fetched Data:', data); // Log for debugging
+
           // Filter slots to only include those from today or later
-          const today = new Date().toISOString().split('T')[0]; // Get today's date in YYYY-MM-DD format
-          const filteredSlots = data.filter(slot => new Date(slot.date) >= new Date(today));
+          const today = new Date().toISOString().split('T')[0];
+          const filteredSlots = data.payload.filter(slot => new Date(slot.date) >= new Date(today));
           setBookedSlots(filteredSlots);
         })
         .catch(error => console.error('Error fetching booked slots:', error));
@@ -23,17 +25,23 @@ const BookedSlotsPage = () => {
   }, [currentUser]);
 
   async function handleDelete(id) {
-    // Delete the slot from the backend
     try {
-      await fetch(`http://localhost:3000/bookedSlots/${id}`, {
+      // Make DELETE request to backend
+      const response = await fetch(`http://localhost:4000/user-api/bookedSlots/${id}`, {
         method: 'DELETE',
       });
-      // Update the local state
-      setBookedSlots(bookedSlots.filter(slot => slot.id !== id));
+  
+      if (response.ok) {
+        // Update state after deletion
+        setBookedSlots(bookedSlots.filter(slot => slot._id !== id));
+      } else {
+        console.error('Error deleting slot:', response.statusText);
+      }
     } catch (error) {
       console.error('Error deleting slot:', error);
     }
-  };
+  }
+  
 
   const renderTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
@@ -57,19 +65,19 @@ const BookedSlotsPage = () => {
                     <th>Event</th>
                     <th>Faculty Name</th>
                     <th>Faculty ID</th>
-                    <th>Booked Time Slots</th> {/* Added column for time slots */}
+                    <th>Booked Time Slots</th>
                     <th>Actions</th> 
                   </tr>
                 </thead>
                 <tbody>
                   {bookedSlots.map((slot) => (
-                    <tr key={slot.id}>
+                    <tr key={slot._id}>
                       <td>{slot.date}</td>
                       <td>{slot.roomNo}</td>
                       <td>{slot.event}</td>
                       <td>{slot.facultyName}</td>
                       <td>{slot.facultyid}</td>
-                      <td>{Array.isArray(slot.timeSlots) ? slot.timeSlots.join(', ') : "No slots booked"}</td> {/* Updated to check for array */}
+                      <td>{Array.isArray(slot.timeSlots) ? slot.timeSlots.join(', ') : "No slots booked"}</td>
                       <td>
                         <OverlayTrigger
                           placement="right"
@@ -78,7 +86,7 @@ const BookedSlotsPage = () => {
                           <span className='d-inline-block'>
                             <FaTrash 
                               className='text-danger cursor-pointer' 
-                              onClick={() => handleDelete(slot.id)} 
+                              onClick={() => handleDelete(slot._id)} 
                             />
                           </span>
                         </OverlayTrigger>

@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
 import { Table, Container, Form, Button, Row, Col } from 'react-bootstrap';
 import './AllBookedSlots.css';
 import { userLoginContext } from "../../contexts/userLoginContext";
@@ -17,8 +16,16 @@ const AllBookedSlots = () => {
   useEffect(() => {
     const fetchBookedSlots = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/bookedSlots');
-        setBookedSlots(response.data); // Store all the fetched slots but don't display them initially
+        const response = await fetch('http://localhost:4000/user-api/bookedSlots');
+        const data = await response.json();
+
+        // Ensure the data is in the expected format
+        if (Array.isArray(data.payload)) {
+          setBookedSlots(data.payload); // Store all the fetched slots but don't display them initially
+        } else {
+          console.error("Unexpected data format:", data);
+        }
+        
         setLoading(false);
       } catch (error) {
         console.error("Error fetching booked slots:", error);

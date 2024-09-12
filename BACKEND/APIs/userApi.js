@@ -6,6 +6,7 @@ require('dotenv').config() //access process.env.SECRET_KEY in the .env file
 const userApp = exp.Router(); 
 const bcryptjs=require('bcryptjs')
 const jwt=require('jsonwebtoken')
+const { ObjectId } = require('mongodb');
 
 //add body parser middleware
 userApp.use(exp.json());
@@ -113,13 +114,58 @@ userApp.post('/book-slot', async (req, res) => {
 
 // To retrieve all booked slots
 userApp.get('/bookedSlots', async (req, res) => {
-  const bookedSlotsCollection = req.app.get('bookedSlotsCollection'); 
+  const bookedSlotsCollection = req.app.get('bookedSlotsCollection');
+  
+  // Get optional query parameters
+  const { date, roomNo } = req.query;
+  
+  // Build a dynamic query object
+  let query = {};
+  if (date) query.date = date;
+  if (roomNo) query.roomNo = roomNo;
+
   try {
-    const bookedSlots = await bookedSlotsCollection.find().toArray();
+    const bookedSlots = await bookedSlotsCollection.find(query).toArray();
     res.send({ message: 'Booked slots', payload: bookedSlots });
   } catch (error) {
     console.error('Error fetching booked slots:', error);
     res.status(500).send({ message: 'Failed to fetch booked slots.' });
+  }
+});
+
+// Route to get a specific booked slot by id
+// Route to get booked slots for a specific facultyid
+userApp.get('/bookedSlots/:facultyid', async (req, res) => {
+  const bookedSlotsCollection = req.app.get('bookedSlotsCollection');
+  const facultyid = req.params.facultyid; // Get the facultyid from params
+
+  try {
+    // Find booked slots by facultyid
+    const bookedSlots = await bookedSlotsCollection.find({ facultyid: facultyid }).toArray();
+    res.send({ message: 'Booked slots', payload: bookedSlots });
+  } catch (error) {
+    console.error('Error fetching booked slots:', error);
+    res.status(500).send({ message: 'Failed to fetch booked slots.' });
+  }
+});
+
+// Route to delete a booked slot by its ID
+userApp.delete('/bookedSlots/:id', async (req, res) => {
+  const bookedSlotsCollection = req.app.get('bookedSlotsCollection');
+  const slotId = req.params.id; // Get the ID from URL params
+
+  try {
+    // Convert slotId to ObjectId
+    const result = await bookedSlotsCollection.deleteOne({ _id: new ObjectId(slotId) });
+    
+    if (result.deletedCount === 1) {
+      res.send({ message: 'Slot deleted successfully.' });
+    } else {
+      res.status(404).send({ message: 'Slot not found.' });
+    }
+  } catch (error) {
+    console.error('Error deleting slot:', error);
+    res.status(500).send({ message: 'Failed to delete slot.' });
   }
 });
 

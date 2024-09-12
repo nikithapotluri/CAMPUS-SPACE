@@ -38,10 +38,10 @@ const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
   // Function to fetch booked slots for the selected date and room number
   const fetchBookedSlots = async (date, roomNo) => {
     try {
-      let res = await fetch(`http://localhost:3000/bookedSlots?date=${date}&roomNo=${roomNo}`);
+      let res = await fetch(`http://localhost:4000/user-api/bookedSlots?date=${date}&roomNo=${roomNo}`);
       if (res.ok) {
         let data = await res.json();
-        setBookedSlots(data);
+        setBookedSlots(data.payload);
       } else {
         toast.error("Failed to fetch booked slots.");
       }
@@ -171,7 +171,7 @@ const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
               />
             </Form.Group>
             <Form.Group controlId="roomNo">
-              <Form.Label>Room Number (For auditorium, enter *)</Form.Label>
+              <Form.Label>Room Number (For auditorium, enter "auditorium")</Form.Label>
               <Form.Control
                 type="text"
                 name="roomNo"
