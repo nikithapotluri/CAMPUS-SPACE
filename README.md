@@ -6,7 +6,7 @@ __CampusSpace__ is a MERN-based web app designed for college lecturers to effici
 
 ## Setup & Usage
 Feel free to clone this repository into your local machine.
-You can run the application by:
+You can run the application by using the following command:
 ```
 npm start
 
