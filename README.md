@@ -6,14 +6,14 @@ __CampusSpace__ is a MERN-based web app designed for college lecturers to effici
 
 ## Setup & Usage
 Feel free to clone this repository into your local machine.
-You can run the application by:
+You can run the application by using the following command:
 ```
 npm start
 
 ```
 + If you would like to customize the platform for specific college needs, you're welcome to modify the code.
 
-+ After finishing customization, you can run the application by:
++ After finishing customization, you can run the application by using the following command:
 ```
 npm install
 
@@ -36,10 +36,10 @@ npm start
 ## Proposed Model
 + CampusSpace features a real-time booking system to ensure up-to-date availability of departmental facilities.
 + It incorporates a priority-based booking feature to allow certain events to be prioritized based on departmental guidelines.
-     - Key features include:
-         * Slot-based booking with a modal for time selection.
-         + User-friendly interface designed for college staff.
-         - Login system with username and password for lecturers.
++ Key features include:
+  * Slot-based booking with a modal for time selection.
+  + User-friendly interface designed for college staff.
+  - Login system with username and password for lecturers.
   
 ## Conclusion
 Campus Space represents a significant advancement in managing department-level infrastructure efficiently.
