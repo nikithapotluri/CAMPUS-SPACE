@@ -3,3 +3,43 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+/* Responsive Table Styling */
+.table-responsive {
+    overflow-x: auto;
+  }
+  
+  @media (max-width: 768px) {
+    table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  
+    thead {
+      display: none;
+    }
+  
+    tr {
+      display: block;
+      margin-bottom: 10px;
+    }
+  
+    td {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      border: 1px solid #dee2e6;
+      font-size: 14px;
+    }
+  
+    td:before {
+      content: attr(data-label);
+      font-weight: bold;
+    }
+  
+    td:last-child {
+      text-align: right;
+    }
+  }
+  

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { userLoginContext } from '../../contexts/userLoginContext';
 import { FaTrash } from 'react-icons/fa';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
+import './bookedSlotsPage.css'; // Adding custom styles
 
 const BookedSlotsPage = () => {
   let { currentUser, userLoginStatus } = useContext(userLoginContext);
@@ -41,7 +42,6 @@ const BookedSlotsPage = () => {
       console.error('Error deleting slot:', error);
     }
   }
-  
 
   const renderTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
@@ -57,44 +57,46 @@ const BookedSlotsPage = () => {
           <div className='d-flex flex-column align-items-center'>
             <h1 className='text-center text-black'>My Upcoming Slots</h1>
             {bookedSlots.length > 0 ? (
-              <table className='table table-bordered mt-4'>
-                <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Room Number</th>
-                    <th>Event</th>
-                    <th>Faculty Name</th>
-                    <th>Faculty ID</th>
-                    <th>Booked Time Slots</th>
-                    <th>Actions</th> 
-                  </tr>
-                </thead>
-                <tbody>
-                  {bookedSlots.map((slot) => (
-                    <tr key={slot._id}>
-                      <td>{slot.date}</td>
-                      <td>{slot.roomNo}</td>
-                      <td>{slot.event}</td>
-                      <td>{slot.facultyName}</td>
-                      <td>{slot.facultyid}</td>
-                      <td>{Array.isArray(slot.timeSlots) ? slot.timeSlots.join(', ') : "No slots booked"}</td>
-                      <td>
-                        <OverlayTrigger
-                          placement="right"
-                          overlay={renderTooltip}
-                        >
-                          <span className='d-inline-block'>
-                            <FaTrash 
-                              className='text-danger cursor-pointer' 
-                              onClick={() => handleDelete(slot._id)} 
-                            />
-                          </span>
-                        </OverlayTrigger>
-                      </td>
+              <div className='table-responsive'>
+                <table className='table table-bordered mt-4'>
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Room Number</th>
+                      <th>Event</th>
+                      <th>Faculty Name</th>
+                      <th>Faculty ID</th>
+                      <th>Booked Time Slots</th>
+                      <th>Actions</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {bookedSlots.map((slot) => (
+                      <tr key={slot._id}>
+                        <td>{slot.date}</td>
+                        <td>{slot.roomNo}</td>
+                        <td>{slot.event}</td>
+                        <td>{slot.facultyName}</td>
+                        <td>{slot.facultyid}</td>
+                        <td>{Array.isArray(slot.timeSlots) ? slot.timeSlots.join(', ') : "No slots booked"}</td>
+                        <td>
+                          <OverlayTrigger
+                            placement="right"
+                            overlay={renderTooltip}
+                          >
+                            <span className='d-inline-block'>
+                              <FaTrash 
+                                className='text-danger cursor-pointer' 
+                                onClick={() => handleDelete(slot._id)} 
+                              />
+                            </span>
+                          </OverlayTrigger>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             ) : (
               <p>No booked slots found.</p>
             )}
