@@ -73,7 +73,7 @@ else{
      //create JWT token
       let signedToken= jwt.sign(
         {username:userCred.username},
-        SECRET_KEY,
+        'sdfghjkksdcvjicvboiuytertyqwertyuioplkjhgfdsazxcbnmkiuytrdcvbnkugv',
         {expiresIn:'1h'}) //process.env.SECRET_KEY is secret token
 
      //send res

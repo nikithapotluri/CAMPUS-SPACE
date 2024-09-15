@@ -14,7 +14,7 @@ require('dotenv').config();
 //import MongoClient
 const { MongoClient } = require("mongodb");
 //Create MongoClient object
-let mClient = new MongoClient(DB_URL);
+let mClient = new MongoClient('mongodb+srv://nikitha_1710:nikitha1710@cluster0.e2laqer.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
 
 //connect to mongodb server
 mClient
@@ -35,7 +35,7 @@ mClient
     console.log("Db connection success");
 
     //assign port numbr to http server of express app
-    app.listen(PORT, () => console.log("http server started on port ",PORT));
+    app.listen(4000, () => console.log("http server started on port 4000"));
   })
   .catch((err) => console.log("Error in DB connection", err));
   
