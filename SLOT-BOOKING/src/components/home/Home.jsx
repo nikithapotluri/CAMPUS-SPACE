@@ -3,8 +3,9 @@ import './Home.css';
 
 import { Link } from "react-router-dom";
 import { HiOutlineHome } from "react-icons/hi";
-import { SiGnuprivacyguard } from "react-icons/si";
 import { FiLogIn } from "react-icons/fi";
+import { FaRegBookmark } from "react-icons/fa";
+import { AiOutlineTeam } from "react-icons/ai";
 
 
 import logo from "../pictures/Logo1.png";
@@ -39,6 +40,24 @@ function Home() {
         <li className="nav-item">
           <Link to="/" className="nav-link">
             <HiOutlineHome className="fs-3 text-danger" /> <div className='white'>Home</div>
+          </Link>
+        </li>
+
+        <li className="nav-item ">
+          <Link to="/allbookedslots" className="nav-link">
+            <FaRegBookmark className="fs-3 text-danger " />
+            <div className="text-white" >
+              Slots
+            </div>
+          </Link>
+        </li>
+
+        <li className="nav-item ">
+          <Link to="/about" className="nav-link">
+            <AiOutlineTeam className="fs-3 text-danger " />
+            <div className="text-white" >
+              About
+            </div>
           </Link>
         </li>
 

@@ -11,6 +11,7 @@ import Select from './components/select/Select';
 import SeminarHall from './components/seminarHalls/SeminarHall'; 
 import BookedSlotsPage from './components/bookedslots/bookedSlotsPage' 
 import AllBookedSlots from './components/allbookedslots/AllBookedSlots'
+import About from './components/about/About'
 
 function App() {
   const browserRouter = createBrowserRouter([
@@ -54,6 +55,10 @@ function App() {
         {
           path: "allbookedslots",
           element: <AllBookedSlots />,
+        },
+        {
+          path: "about",
+          element: <About />,
         }
       ],
     },

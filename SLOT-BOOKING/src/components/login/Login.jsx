@@ -7,7 +7,9 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { HiOutlineHome } from "react-icons/hi";
 import { FiLogIn } from "react-icons/fi";
+import { FaRegBookmark } from "react-icons/fa";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { AiOutlineTeam } from "react-icons/ai";
 import logo from "../pictures/Logo1.png";
 import { userLoginContext } from "../../contexts/userLoginContext";
 
@@ -47,6 +49,25 @@ function Login() {
                   <HiOutlineHome className="fs-3 text-danger" /> Home
                 </Link>
               </li>
+
+              <li className="nav-item ">
+          <Link to="/allbookedslots" className="nav-link">
+            <FaRegBookmark className="fs-3 text-danger " />
+            <div className="text-white" >
+              Slots
+            </div>
+          </Link>
+        </li>
+
+              <li className="nav-item ">
+          <Link to="/about" className="nav-link">
+            <AiOutlineTeam className="fs-3 text-danger " />
+            <div className="text-white">
+              About
+            </div>
+          </Link>
+        </li>
+
               <li className="nav-item">
                 <Link to="/login" className="nav-link" style={{ color: 'white' }}>
                   <FiLogIn className="fs-3 text-danger" /> Login
