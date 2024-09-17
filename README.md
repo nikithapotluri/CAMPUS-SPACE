@@ -43,4 +43,3 @@ npm start
   
 ## Conclusion
 Campus Space represents a significant advancement in managing department-level infrastructure efficiently.
-Future enhancements may include expanding the system to accommodate college-wide bookings.
