@@ -62,7 +62,7 @@ function Header() {
             onMouseLeave={() => setShowDetails(false)}
           >
             <p className="d-flex align-items-center mb-0">
-              <img src={currentUser?.profile_pic || {dp} } className="user-photo me-2" />
+              <img src={currentUser?.profile_pic || {dp} } className="me-2" />
               <FaChevronDown className="ms-2" />
             </p>
             {showDetails && currentUser && (
