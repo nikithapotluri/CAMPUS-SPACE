@@ -4,9 +4,20 @@ const exp = require("express");
 const app = exp();
 
 const cors=require('cors');
+
+const allowedOrigins = [
+  'https://campus-space-one.vercel.app'
+];
+
 app.use(cors({
-  origin:'https://campus-space-one.vercel.app/'
-}))
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
 
 app.use(exp.json())
 require('dotenv').config();
