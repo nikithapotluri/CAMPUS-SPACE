@@ -38,7 +38,7 @@ const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
   // Function to fetch booked slots for the selected date and room number
   const fetchBookedSlots = async (date, roomNo) => {
     try {
-      let res = await fetch(`http://localhost:4000/user-api/bookedSlots?date=${date}&roomNo=${roomNo}`);
+      let res = await fetch(`https://campus-space-bend.vercel.app/user-api/bookedSlots?date=${date}&roomNo=${roomNo}`);
       if (res.ok) {
         let data = await res.json();
         setBookedSlots(data.payload);
@@ -100,7 +100,7 @@ const ModalPopup = ({ isOpen, onClose, selectedLab }) => {
       slotSelected
     ) {
       try {
-        let res = await fetch("http://localhost:4000/user-api/book-slot", {
+        let res = await fetch("https://campus-space-bend.vercel.app/user-api/book-slot", {
           method: "POST",
           headers: { "Content-type": "application/json" },
           body: JSON.stringify(values),
