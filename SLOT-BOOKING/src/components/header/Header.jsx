@@ -70,10 +70,10 @@ function Header() {
                 <p className="row"><strong className="col-2">Name</strong>  <strong className="col-1">:</strong> <p className="col-9">{currentUser.name}</p></p>
                 <p className="row"><strong className="col-2">ID</strong>    <strong className="col-1">:</strong> <p className="col-9">{currentUser.username}</p></p>
                 <p className="row"><strong className="col-2">Email</strong> <strong className="col-1">:</strong> <p className="col-9">{currentUser.email}</p></p>
-                <Link to="/bookedslots" className="btn btn-success mx-2">
+                <Link to="/bookedslots" className="btn btn-primary mx-2">
                       My Slots
                 </Link>
-                <button className="btn btn-danger" onClick={logoutUser}>
+                <button className="btn btn-primary" onClick={logoutUser}>
                   Logout
                 </button>
               </div>

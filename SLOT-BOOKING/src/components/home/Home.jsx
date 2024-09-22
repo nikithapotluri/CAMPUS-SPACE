@@ -44,15 +44,6 @@ function Home() {
         </li>
 
         <li className="nav-item ">
-          <Link to="/allbookedslots" className="nav-link">
-            <FaRegBookmark className="fs-3 text-danger " />
-            <div className="text-white" >
-              Slots
-            </div>
-          </Link>
-        </li>
-
-        <li className="nav-item ">
           <Link to="/about" className="nav-link">
             <AiOutlineTeam className="fs-3 text-danger " />
             <div className="text-white" >
