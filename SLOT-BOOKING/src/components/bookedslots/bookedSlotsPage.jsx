@@ -28,7 +28,7 @@ const BookedSlotsPage = () => {
   async function handleDelete(id) {
     try {
       // Make DELETE request to backend
-      const response = await fetch(`http://localhost:4000/user-api/bookedSlots/${id}`, {
+      const response = await fetch(`https://campus-space-bend.vercel.app/user-api/bookedSlots/${id}`, {
         method: 'DELETE',
       });
   
