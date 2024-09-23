@@ -11,7 +11,7 @@ const BookedSlotsPage = () => {
   useEffect(() => {
     if (currentUser) {
       // Fetch booked slots for the current user by facultyid
-      fetch(`http://localhost:4000/user-api/bookedSlots/${currentUser.username}`)
+      fetch(`https://campus-space-bend.vercel.app/user-api/bookedSlots/${currentUser.username}`)
         .then(response => response.json())
         .then(data => {
           console.log('Fetched Data:', data); // Log for debugging

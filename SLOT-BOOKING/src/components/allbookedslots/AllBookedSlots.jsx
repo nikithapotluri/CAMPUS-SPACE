@@ -16,7 +16,7 @@ const AllBookedSlots = () => {
   useEffect(() => {
     const fetchBookedSlots = async () => {
       try {
-        const response = await fetch('http://localhost:4000/user-api/bookedSlots');
+        const response = await fetch('https://campus-space-bend.vercel.app/user-api/bookedSlots');
         const data = await response.json();
 
         // Ensure the data is in the expected format
