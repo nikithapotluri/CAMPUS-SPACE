@@ -14,8 +14,6 @@ function Slot() {
   let { currentUser, loginUser, userLoginStatus} = useContext(userLoginContext);
 
 
-  const userPhoto = currentUser?.profile_pic || 'https://png.pngtree.com/png-clipart/20191120/original/pngtree-outline-user-icon-png-image_5045523.jpg';
-
   // State for modal and selected lab
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedLab, setSelectedLab] = useState(null);
