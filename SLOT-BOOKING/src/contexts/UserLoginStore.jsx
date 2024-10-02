@@ -2,6 +2,8 @@ import { userLoginContext } from './userLoginContext';
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
 
+//localStorage is used to stay logged in even after refreshing the page.
+
 function UserLoginStore({ children }) {
   // login user state
   let [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('currentUser')) || null);
