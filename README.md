@@ -42,4 +42,4 @@ npm start
   - Login system with username and password for lecturers.
   
 ## Conclusion
-Campus Space represents a significant advancement in managing department-level infrastructure efficiently.
+CampusSpace represents a significant advancement in managing department-level infrastructure efficiently.
