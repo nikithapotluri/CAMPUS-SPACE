@@ -14,10 +14,11 @@ import side2 from "../pictures/Standing.png";
 
 import { CiLogout } from "react-icons/ci";
 import { IoMdInformationCircle } from "react-icons/io";
-//import { userLoginContext } from "../../contexts/userLoginContext";
+import { userLoginContext } from "../../contexts/userLoginContext";
 import { useContext } from "react";
 
 function Home() {
+  let { loginUser, userLoginStatus } = useContext(userLoginContext);
   return (
 
 
