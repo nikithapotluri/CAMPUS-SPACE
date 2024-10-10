@@ -6,9 +6,7 @@ const app = exp();
 const cors=require('cors');
 
 // Production
- app.use(cors({
-   origin:'https://campus-space-site.vercel.app'
- }))
+app.use(cors());
 
 
 app.use(exp.json())
