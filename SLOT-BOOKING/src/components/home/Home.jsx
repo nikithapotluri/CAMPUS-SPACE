@@ -27,39 +27,51 @@ function Home() {
     {/*HEADER OF HOME*/}
 
     <div className="d-flex flex-wrap justify-content-between align-items-center header p-1">
-      {/* Logo on the left */}
-      <div className="logo">
-        <Link to="/">
-        <img src={logo} alt="Logo" className="logo-image"  />
-        </Link>
-      </div>
+          {/* Logo on the left */}
+          <div className="logo">
+            <Link to="/">
+              <img src={logo} alt="Logo" className="logo-image" />
+            </Link>
+          </div>
 
-      {/* Navigation items on the right */}
-      <ul className="nav fs-5">
+          {/* Navigation items on the right */}
+          <ul className="nav fs-5">
 
-        <li className="nav-item">
-          <Link to="/" className="nav-link">
-            <HiOutlineHome className="fs-3 text-danger" /> <div className='white'>Home</div>
-          </Link>
-        </li>
+            <li className="nav-item">
+              <Link to="/" className="nav-link">
+                <HiOutlineHome className="fs-3 text-danger" /> <div className='white'>Home</div>
+              </Link>
+            </li>
 
-        <li className="nav-item ">
-          <Link to="/about" className="nav-link">
-            <AiOutlineTeam className="fs-3 text-danger " />
-            <div className="text-white" >
-              About
-            </div>
-          </Link>
-        </li>
+            <li className="nav-item ">
+              <Link to="/about" className="nav-link">
+                <AiOutlineTeam className="fs-3 text-danger " />
+                <div className="text-white" >
+                  About
+                </div>
+              </Link>
+            </li>
 
-        <li className="nav-item">
-          <Link to="/login" className="nav-link">
-            <FiLogIn className="fs-3 text-danger" /> <div className='white'>Login</div>
-          </Link>
-        </li>
+            {
+              userLoginStatus ?
+                <li className="nav-item ">
+                  <Link to="/allbookedslots" className="nav-link">
+                    <FaRegBookmark className="fs-3 text-danger " />
+                    <div className="white" style={{ color: 'white' }}>
+                      Slots
+                    </div>
+                  </Link>
+                </li>
+                :
+                <li className="nav-item">
+                  <Link to="/login" className="nav-link">
+                    <FiLogIn className="fs-3 text-danger" /> <div className='white'>Login</div>
+                  </Link>
+                </li>
+            }
 
-      </ul>
-    </div>
+          </ul>
+        </div>
 
     
 
