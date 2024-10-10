@@ -19,7 +19,7 @@ const { MongoClient } = require("mongodb");
 const DB_URL = process.env.DB_URL;
 
 //Create MongoClient object
-let mClient = new MongoClient(DB_URL);
+let mClient = new MongoClient('mongodb+srv://nikitha_1710:nikitha1710@cluster0.e2laqer.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
 
 //connect to mongodb server
 mClient
