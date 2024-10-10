@@ -5,17 +5,23 @@ const app = exp();
 
 const cors=require('cors');
 
-app.use(cors({
+// Production
+ app.use(cors({
   origin:'https://campus-space-site.vercel.app'
-}))
+ }))
+
 
 app.use(exp.json())
 require('dotenv').config();
 
 //import MongoClient
 const { MongoClient } = require("mongodb");
+
+// getting DBURL from .env
+const DB_URL = process.env.DB_URL;
+
 //Create MongoClient object
-let mClient = new MongoClient('mongodb+srv://nikitha_1710:nikitha1710@cluster0.e2laqer.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
+let mClient = new MongoClient(DB_URL);
 
 //connect to mongodb server
 mClient
