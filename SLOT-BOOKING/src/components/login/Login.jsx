@@ -27,7 +27,16 @@ function Login() {
   useEffect(() => {
     if (userLoginStatus === true) {
       setTimeout(() => {
-        navigate("/slot");
+        // navigate("/slot");
+        navigate("/", {replace:true});
+      }, 2000);
+    }
+  }, [userLoginStatus]);
+  useEffect(() => {
+    if (userLoginStatus === true) {
+      setTimeout(() => {
+        navigate("/slot", {replace:true});
+        // navigate("/");
       }, 2000);
     }
   }, [userLoginStatus]);
