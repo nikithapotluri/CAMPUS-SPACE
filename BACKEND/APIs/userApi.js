@@ -8,6 +8,9 @@ const bcryptjs = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const { ObjectId } = require('mongodb');
 
+// getting SECRET_KEY from .env
+const SECRET_KEY = process.env.SECRET_KEY;
+
 //add body parser middleware
 userApp.use(exp.json());
 
