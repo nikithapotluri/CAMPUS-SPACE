@@ -10,7 +10,6 @@ import logo from "../pictures/Logo1.png";
 import { userLoginContext } from "../../contexts/userLoginContext";
 
 function Home() {
-  // Access user context and state for showing the dropdown
   let { currentUser, logoutUser, userLoginStatus } = useContext(userLoginContext);
   const [showDetails, setShowDetails] = useState(false);
 
@@ -44,13 +43,13 @@ function Home() {
             </li>
 
             <li className="nav-item ">
-          <Link to="/allbookedslots" className="nav-link">
-            <FaRegBookmark className="fs-3 text-danger " />
-            <div className="black" style={{ color: 'black' }}>
-              Slots
-            </div>
-          </Link>
-        </li>
+              <Link to="/allbookedslots" className="nav-link">
+                <FaRegBookmark className="fs-3 text-danger" />
+                <div className="white" style={{ color: 'white' }}>
+                  Slots
+                </div>
+              </Link>
+            </li>
 
             {userLoginStatus ? (
               // User details dropdown
@@ -59,12 +58,13 @@ function Home() {
                   className="user-info"
                   onClick={() => setShowDetails(!showDetails)}
                   onMouseLeave={() => setShowDetails(false)}
+                  style={{ color: 'black' }} // Setting dropdown text to black
                 >
                   <p className="d-flex align-items-center mb-0">
                     <img src={currentUser?.profile_pic || logo} className="me-2" alt="User" />
-                    <FaChevronDown className="ms-2" />
+                    <FaChevronDown className="ms-2" style={{ color: 'black' }} /> {/* Dropdown symbol in black */}
                   </p>
-                  {/* User details dropdown content */}
+                  
                   {showDetails && currentUser && (
                     <div className="container mt-2 p-3 bg-light border rounded">
                       <p className="row">
