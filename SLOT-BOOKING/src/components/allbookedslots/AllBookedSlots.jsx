@@ -9,13 +9,12 @@ const AllBookedSlots = () => {
   const [loading, setLoading] = useState(true);
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [facultyID, setFacultyID] = useState(''); // Dropdown for faculty ID
-  const [roomNo, setRoomNo] = useState(''); // Dropdown for room number
+  const [facultyID, setFacultyID] = useState(''); // Text input for faculty ID
+  const [roomNo, setRoomNo] = useState(''); // Text input for room number
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
   let { userLoginStatus } = useContext(userLoginContext);
 
-  // Fetch booked slots data
   useEffect(() => {
     const fetchBookedSlots = async () => {
       try {
@@ -37,7 +36,6 @@ const AllBookedSlots = () => {
     fetchBookedSlots();
   }, []);
 
-  // Handle filtering by date range, faculty ID, and room number
   const handleFilter = () => {
     let filtered = bookedSlots.filter(slot => {
       const slotDate = new Date(slot.date);
@@ -54,10 +52,6 @@ const AllBookedSlots = () => {
     setFilteredSlots(filtered);
     setHasSubmitted(true);
   };
-
-  // Populate dropdown options for faculty IDs and room numbers
-  const facultyIDs = Array.from(new Set(bookedSlots.map(slot => slot.facultyid)));
-  const roomNos = Array.from(new Set(bookedSlots.map(slot => slot.roomNo)));
 
   return (
     <div>
@@ -94,30 +88,22 @@ const AllBookedSlots = () => {
                   <Form.Group controlId="facultyID">
                     <Form.Label className='text-black'><b>Faculty ID</b></Form.Label>
                     <Form.Control
-                      as="select"
+                      type="text"
+                      placeholder="Enter Faculty ID"
                       value={facultyID}
                       onChange={(e) => setFacultyID(e.target.value)}
-                    >
-                      <option value="">Select Faculty ID</option>
-                      {facultyIDs.map((id, index) => (
-                        <option key={index} value={id}>{id}</option>
-                      ))}
-                    </Form.Control>
+                    />
                   </Form.Group>
                 </Col>
                 <Col lg={4} md={6} sm={12} className="mb-2">
                   <Form.Group controlId="roomNo">
                     <Form.Label className='text-black'><b>Room Number</b></Form.Label>
                     <Form.Control
-                      as="select"
+                      type="text"
+                      placeholder="Enter Room Number"
                       value={roomNo}
                       onChange={(e) => setRoomNo(e.target.value)}
-                    >
-                      <option value="">Select Room Number</option>
-                      {roomNos.map((room, index) => (
-                        <option key={index} value={room}>{room}</option>
-                      ))}
-                    </Form.Control>
+                    />
                   </Form.Group>
                 </Col>
                 <Col lg={4} md={6} sm={12} className="d-flex align-items-center">
