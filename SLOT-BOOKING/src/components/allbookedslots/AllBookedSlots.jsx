@@ -9,7 +9,12 @@ const AllBookedSlots = () => {
   const [loading, setLoading] = useState(true);
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [hasSubmitted, setHasSubmitted] = useState(false); // To track if the user has submitted the filter
+  const [roomNo, setRoomNo] = useState(''); // Detailed room number filter
+  const [facultyName, setFacultyName] = useState('');
+  const [eventType, setEventType] = useState('');
+  const [userID, setUserID] = useState(''); // New quick filter for userID
+  const [roomNoQuick, setRoomNoQuick] = useState(''); // New quick filter for room number
+  const [hasSubmitted, setHasSubmitted] = useState(false);
 
   let { userLoginStatus } = useContext(userLoginContext);
 
@@ -19,9 +24,8 @@ const AllBookedSlots = () => {
         const response = await fetch('https://campus-space-bend.vercel.app/user-api/bookedSlots');
         const data = await response.json();
 
-        // Ensure the data is in the expected format
         if (Array.isArray(data.payload)) {
-          setBookedSlots(data.payload); // Store all the fetched slots but don't display them initially
+          setBookedSlots(data.payload);
         } else {
           console.error("Unexpected data format:", data);
         }
@@ -36,14 +40,32 @@ const AllBookedSlots = () => {
   }, []);
 
   const handleFilter = () => {
-    if (startDate && endDate) {
-      const filtered = bookedSlots.filter(slot => {
+    let filtered;
+
+    if (userID) {
+      // Quick filter by userID
+      filtered = bookedSlots.filter(slot => slot.facultyid === userID);
+    } else if (roomNoQuick) {
+      // Quick filter by room number
+      filtered = bookedSlots.filter(slot => slot.roomNo === roomNoQuick);
+    } else {
+      // Apply detailed filters
+      filtered = bookedSlots.filter(slot => {
         const slotDate = new Date(slot.date);
-        return slotDate >= new Date(startDate) && slotDate <= new Date(endDate);
+        const isDateInRange = startDate && endDate
+          ? slotDate >= new Date(startDate) && slotDate <= new Date(endDate)
+          : true;
+
+        const isRoomMatch = roomNo ? slot.roomNo === roomNo : true;
+        const isFacultyMatch = facultyName ? slot.facultyName.toLowerCase().includes(facultyName.toLowerCase()) : true;
+        const isEventMatch = eventType ? slot.event.toLowerCase().includes(eventType.toLowerCase()) : true;
+
+        return isDateInRange && isRoomMatch && isFacultyMatch && isEventMatch;
       });
-      setFilteredSlots(filtered);
-      setHasSubmitted(true); // Set to true after the user submits the date filter
     }
+
+    setFilteredSlots(filtered);
+    setHasSubmitted(true);
   };
 
   return (
@@ -57,7 +79,7 @@ const AllBookedSlots = () => {
           ) : (
             <>
               <Row className="mb-4 align-items-center">
-                <Col lg={4} md={6} sm={12} className="mb-2 mb-lg-0">
+                <Col lg={3} md={6} sm={12} className="mb-2">
                   <Form.Group controlId="startDate">
                     <Form.Label className='text-dark'><b>Start Date</b></Form.Label>
                     <Form.Control
@@ -67,7 +89,7 @@ const AllBookedSlots = () => {
                     />
                   </Form.Group>
                 </Col>
-                <Col lg={4} md={6} sm={12} className="mb-2 mb-lg-0">
+                <Col lg={3} md={6} sm={12} className="mb-2">
                   <Form.Group controlId="endDate">
                     <Form.Label className='text-black'><b>End Date</b></Form.Label>
                     <Form.Control
@@ -77,12 +99,67 @@ const AllBookedSlots = () => {
                     />
                   </Form.Group>
                 </Col>
-                <Col lg={4} md={12} sm={12} className="d-flex align-items-center">
-                  <Button onClick={handleFilter} className="w-100">Submit</Button>
+                <Col lg={3} md={6} sm={12} className="mb-2">
+                  <Form.Group controlId="roomNo">
+                    <Form.Label className='text-black'><b>Room Number</b></Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter room number"
+                      value={roomNo}
+                      onChange={(e) => setRoomNo(e.target.value)}
+                    />
+                  </Form.Group>
+                </Col>
+                <Col lg={3} md={6} sm={12} className="mb-2">
+                  <Form.Group controlId="facultyName">
+                    <Form.Label className='text-black'><b>Faculty Name</b></Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter faculty name"
+                      value={facultyName}
+                      onChange={(e) => setFacultyName(e.target.value)}
+                    />
+                  </Form.Group>
+                </Col>
+                <Col lg={3} md={6} sm={12} className="mb-2">
+                  <Form.Group controlId="eventType">
+                    <Form.Label className='text-black'><b>Event Type</b></Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter event type"
+                      value={eventType}
+                      onChange={(e) => setEventType(e.target.value)}
+                    />
+                  </Form.Group>
+                </Col>
+                <Col lg={3} md={6} sm={12} className="mb-2">
+                  <Form.Group controlId="userID">
+                    <Form.Label className='text-black'><b>Faculty ID</b></Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter faculty ID"
+                      value={userID}
+                      onChange={(e) => setUserID(e.target.value)}
+                    />
+                  </Form.Group>
+                </Col>
+                <Col lg={3} md={6} sm={12} className="mb-2">
+                  <Form.Group controlId="roomNoQuick">
+                    <Form.Label className='text-black'><b>Room Number Quick Search</b></Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Quickly search by room number"
+                      value={roomNoQuick}
+                      onChange={(e) => setRoomNoQuick(e.target.value)}
+                    />
+                  </Form.Group>
+                </Col>
+                <Col lg={3} md={6} sm={12} className="d-flex align-items-center">
+                  <Button onClick={handleFilter} className="w-100 mt-3">Submit</Button>
                 </Col>
               </Row>
 
-              {hasSubmitted && ( // Only show table after the user submits the form
+              {hasSubmitted && (
                 <Table striped bordered hover>
                   <thead>
                     <tr>
@@ -108,7 +185,7 @@ const AllBookedSlots = () => {
                       ))
                     ) : (
                       <tr>
-                        <td colSpan="6" className="text-center">No slots found for the selected date range</td>
+                        <td colSpan="6" className="text-center">No slots found for the selected filters</td>
                       </tr>
                     )}
                   </tbody>
