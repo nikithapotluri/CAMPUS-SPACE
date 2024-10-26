@@ -48,7 +48,7 @@ function Header() {
         <li className="nav-item ">
               <Link to="/slot" className="nav-link">
                 <FaRegBookmark className="fs-3 text-danger" />
-                <div className="white" style={{ color: 'white' }}>
+                <div className="black" style={{ color: 'black' }}>
                   Book
                 </div>
               </Link>
