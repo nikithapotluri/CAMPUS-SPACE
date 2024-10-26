@@ -43,6 +43,15 @@ function Home() {
             </li>
 
             <li className="nav-item ">
+              <Link to="/slot" className="nav-link">
+                <FaRegBookmark className="fs-3 text-danger" />
+                <div className="white" style={{ color: 'white' }}>
+                  Book
+                </div>
+              </Link>
+            </li>
+
+            <li className="nav-item ">
               <Link to="/allbookedslots" className="nav-link">
                 <FaRegBookmark className="fs-3 text-danger" />
                 <div className="white" style={{ color: 'white' }}>
@@ -96,7 +105,7 @@ function Home() {
               <li className="nav-item">
                 <Link to="/login" className="nav-link">
                   <FiLogIn className="fs-3 text-danger" />
-                  <div className="black" style={{ color: 'black' }}>Login</div>
+                  <div className="white" style={{ color: 'white' }}>Login</div>
                 </Link>
               </li>
             )}
