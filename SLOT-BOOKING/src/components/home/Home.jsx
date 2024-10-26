@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { HiOutlineHome } from "react-icons/hi";
 import { FaRegBookmark } from "react-icons/fa";
 import { FiLogIn } from "react-icons/fi";
+import { PiCursorClick } from "react-icons/pi";
 import { FaChevronDown } from "react-icons/fa";
 import { AiOutlineTeam } from "react-icons/ai";
 import logo from "../pictures/Logo1.png";
@@ -44,7 +45,7 @@ function Home() {
 
             <li className="nav-item ">
               <Link to="/slot" className="nav-link">
-                <FaRegBookmark className="fs-3 text-danger" />
+                <PiCursorClick className="fs-3 text-danger" />
                 <div className="white" style={{ color: 'white' }}>
                   Book
                 </div>

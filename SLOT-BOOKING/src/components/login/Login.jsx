@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { HiOutlineHome } from "react-icons/hi";
 import { FiLogIn } from "react-icons/fi";
+import { PiCursorClick } from "react-icons/pi";
 import { FaRegBookmark } from "react-icons/fa";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { AiOutlineTeam } from "react-icons/ai";
@@ -74,7 +75,7 @@ function Login() {
 
             <li className="nav-item ">
               <Link to="/slot" className="nav-link">
-                <FaRegBookmark className="fs-3 text-danger" />
+                <PiCursorClick className="fs-3 text-danger" />
                 <div className="white" style={{ color: 'white' }}>
                   Book
                 </div>
