@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import './Footer.css'; 
 
 function Footer() {
   return (
-    <div>
-        
-    </div>
-  )
+    <footer className="footer">
+      <p>© 2024 Campus Space. All rights reserved.</p>
+    </footer>
+  );
 }
 
-export default Footer
+export default Footer;
