@@ -9,15 +9,13 @@ const AllBookedSlots = () => {
   const [loading, setLoading] = useState(true);
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [roomNo, setRoomNo] = useState(''); // Detailed room number filter
-  const [facultyName, setFacultyName] = useState('');
-  const [eventType, setEventType] = useState('');
-  const [userID, setUserID] = useState(''); // New quick filter for userID
-  const [roomNoQuick, setRoomNoQuick] = useState(''); // New quick filter for room number
+  const [facultyID, setFacultyID] = useState(''); // Dropdown for faculty ID
+  const [roomNo, setRoomNo] = useState(''); // Dropdown for room number
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
   let { userLoginStatus } = useContext(userLoginContext);
 
+  // Fetch booked slots data
   useEffect(() => {
     const fetchBookedSlots = async () => {
       try {
@@ -29,7 +27,7 @@ const AllBookedSlots = () => {
         } else {
           console.error("Unexpected data format:", data);
         }
-        
+
         setLoading(false);
       } catch (error) {
         console.error("Error fetching booked slots:", error);
@@ -39,34 +37,27 @@ const AllBookedSlots = () => {
     fetchBookedSlots();
   }, []);
 
+  // Handle filtering by date range, faculty ID, and room number
   const handleFilter = () => {
-    let filtered;
+    let filtered = bookedSlots.filter(slot => {
+      const slotDate = new Date(slot.date);
+      const isDateInRange = startDate && endDate
+        ? slotDate >= new Date(startDate) && slotDate <= new Date(endDate)
+        : true;
 
-    if (userID) {
-      // Quick filter by userID
-      filtered = bookedSlots.filter(slot => slot.facultyid === userID);
-    } else if (roomNoQuick) {
-      // Quick filter by room number
-      filtered = bookedSlots.filter(slot => slot.roomNo === roomNoQuick);
-    } else {
-      // Apply detailed filters
-      filtered = bookedSlots.filter(slot => {
-        const slotDate = new Date(slot.date);
-        const isDateInRange = startDate && endDate
-          ? slotDate >= new Date(startDate) && slotDate <= new Date(endDate)
-          : true;
+      const isFacultyMatch = facultyID ? slot.facultyid === facultyID : true;
+      const isRoomMatch = roomNo ? slot.roomNo === roomNo : true;
 
-        const isRoomMatch = roomNo ? slot.roomNo === roomNo : true;
-        const isFacultyMatch = facultyName ? slot.facultyName.toLowerCase().includes(facultyName.toLowerCase()) : true;
-        const isEventMatch = eventType ? slot.event.toLowerCase().includes(eventType.toLowerCase()) : true;
-
-        return isDateInRange && isRoomMatch && isFacultyMatch && isEventMatch;
-      });
-    }
+      return isDateInRange && isFacultyMatch && isRoomMatch;
+    });
 
     setFilteredSlots(filtered);
     setHasSubmitted(true);
   };
+
+  // Populate dropdown options for faculty IDs and room numbers
+  const facultyIDs = Array.from(new Set(bookedSlots.map(slot => slot.facultyid)));
+  const roomNos = Array.from(new Set(bookedSlots.map(slot => slot.roomNo)));
 
   return (
     <div>
@@ -79,7 +70,7 @@ const AllBookedSlots = () => {
           ) : (
             <>
               <Row className="mb-4 align-items-center">
-                <Col lg={3} md={6} sm={12} className="mb-2">
+                <Col lg={4} md={6} sm={12} className="mb-2">
                   <Form.Group controlId="startDate">
                     <Form.Label className='text-dark'><b>Start Date</b></Form.Label>
                     <Form.Control
@@ -89,7 +80,7 @@ const AllBookedSlots = () => {
                     />
                   </Form.Group>
                 </Col>
-                <Col lg={3} md={6} sm={12} className="mb-2">
+                <Col lg={4} md={6} sm={12} className="mb-2">
                   <Form.Group controlId="endDate">
                     <Form.Label className='text-black'><b>End Date</b></Form.Label>
                     <Form.Control
@@ -99,62 +90,37 @@ const AllBookedSlots = () => {
                     />
                   </Form.Group>
                 </Col>
-                <Col lg={3} md={6} sm={12} className="mb-2">
+                <Col lg={4} md={6} sm={12} className="mb-2">
+                  <Form.Group controlId="facultyID">
+                    <Form.Label className='text-black'><b>Faculty ID</b></Form.Label>
+                    <Form.Control
+                      as="select"
+                      value={facultyID}
+                      onChange={(e) => setFacultyID(e.target.value)}
+                    >
+                      <option value="">Select Faculty ID</option>
+                      {facultyIDs.map((id, index) => (
+                        <option key={index} value={id}>{id}</option>
+                      ))}
+                    </Form.Control>
+                  </Form.Group>
+                </Col>
+                <Col lg={4} md={6} sm={12} className="mb-2">
                   <Form.Group controlId="roomNo">
                     <Form.Label className='text-black'><b>Room Number</b></Form.Label>
                     <Form.Control
-                      type="text"
-                      placeholder="Enter room number"
+                      as="select"
                       value={roomNo}
                       onChange={(e) => setRoomNo(e.target.value)}
-                    />
+                    >
+                      <option value="">Select Room Number</option>
+                      {roomNos.map((room, index) => (
+                        <option key={index} value={room}>{room}</option>
+                      ))}
+                    </Form.Control>
                   </Form.Group>
                 </Col>
-                <Col lg={3} md={6} sm={12} className="mb-2">
-                  <Form.Group controlId="facultyName">
-                    <Form.Label className='text-black'><b>Faculty Name</b></Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Enter faculty name"
-                      value={facultyName}
-                      onChange={(e) => setFacultyName(e.target.value)}
-                    />
-                  </Form.Group>
-                </Col>
-                <Col lg={3} md={6} sm={12} className="mb-2">
-                  <Form.Group controlId="eventType">
-                    <Form.Label className='text-black'><b>Event Type</b></Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Enter event type"
-                      value={eventType}
-                      onChange={(e) => setEventType(e.target.value)}
-                    />
-                  </Form.Group>
-                </Col>
-                <Col lg={3} md={6} sm={12} className="mb-2">
-                  <Form.Group controlId="userID">
-                    <Form.Label className='text-black'><b>Faculty ID</b></Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Enter faculty ID"
-                      value={userID}
-                      onChange={(e) => setUserID(e.target.value)}
-                    />
-                  </Form.Group>
-                </Col>
-                <Col lg={3} md={6} sm={12} className="mb-2">
-                  <Form.Group controlId="roomNoQuick">
-                    <Form.Label className='text-black'><b>Room Number Quick Search</b></Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Quickly search by room number"
-                      value={roomNoQuick}
-                      onChange={(e) => setRoomNoQuick(e.target.value)}
-                    />
-                  </Form.Group>
-                </Col>
-                <Col lg={3} md={6} sm={12} className="d-flex align-items-center">
+                <Col lg={4} md={6} sm={12} className="d-flex align-items-center">
                   <Button onClick={handleFilter} className="w-100 mt-3">Submit</Button>
                 </Col>
               </Row>
