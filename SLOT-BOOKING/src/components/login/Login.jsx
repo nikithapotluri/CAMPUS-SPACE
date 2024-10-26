@@ -81,6 +81,15 @@ function Login() {
               </Link>
             </li>
 
+            <li className="nav-item ">
+                  <Link to="/allbookedslots" className="nav-link">
+                    <FaRegBookmark className="fs-3 text-danger " />
+                    <div className="white" style={{ color: 'white' }}>
+                      Slots
+                    </div>
+                  </Link>
+            </li>
+
             {
               userLoginStatus ?
                 <li className="nav-item ">
