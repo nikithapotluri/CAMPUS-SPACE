@@ -2,6 +2,7 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import { HiOutlineHome } from "react-icons/hi";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
+import { PiCursorClick } from "react-icons/pi";
 import { FaChevronDown } from "react-icons/fa";
 import { FaRegBookmark } from "react-icons/fa";
 import { AiOutlineTeam } from "react-icons/ai";
@@ -47,7 +48,7 @@ function Header() {
 
         <li className="nav-item ">
               <Link to="/slot" className="nav-link">
-                <FaRegBookmark className="fs-3 text-danger" />
+                <PiCursorClick className="fs-3 text-danger" />
                 <div className="black" style={{ color: 'black' }}>
                   Book
                 </div>
