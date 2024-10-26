@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import './Home.css'; 
 import { Link } from "react-router-dom";
 import { HiOutlineHome } from "react-icons/hi";
+import { FaRegBookmark } from "react-icons/fa";
 import { FiLogIn } from "react-icons/fi";
 import { FaChevronDown } from "react-icons/fa";
 import { AiOutlineTeam } from "react-icons/ai";
