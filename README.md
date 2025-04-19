@@ -1,5 +1,5 @@
 
-# Slot Booking System
+# Campus Slot Booking System
 
 __CampusSpace__ is a MERN-based web app designed for college lecturers to efficiently book seminar halls, labs, and auditoriums. It simplifies campus resource management with features like easy space booking, time slot management, and login authentication.
 
